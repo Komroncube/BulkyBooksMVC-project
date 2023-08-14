@@ -8,6 +8,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<BulkyBookDbContext>(options => options.UseNpgsql(
     builder.Configuration.GetConnectionString("PostgresqlConnection")
     ));
+builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
