@@ -22,6 +22,7 @@ namespace BulkyBooks.Controllers
             return View();
         }
         [HttpPost]
+        //hack qilishmasligi uchun
         [ValidateAntiForgeryToken]
         public IActionResult Create(Category obj)
         {
