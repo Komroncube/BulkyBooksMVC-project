@@ -10,7 +10,7 @@ builder.Services.AddDbContext<BulkyBookDbContext>(options => options.UseNpgsql(
     ));
 builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 var app = builder.Build();
-
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
