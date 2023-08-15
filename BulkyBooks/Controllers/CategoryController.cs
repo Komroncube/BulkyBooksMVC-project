@@ -40,5 +40,40 @@ namespace BulkyBooks.Controllers
             }
             return View(obj);
         }
+        
+        
+        public IActionResult Edit(int? id)
+        {
+            if(id==null || id<=0)
+            {
+                return NotFound();
+            }
+            var obj = _db.Categories.Find(id);
+            if (obj==null)
+            {
+                return NotFound();
+            }
+            
+            return View(obj);
+        }
+        [HttpPost]
+        //hack qilishmasligi uchun
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(Category obj)
+        {
+            //qo'lbola validatsiya yaratish
+            if(obj.Name==obj.DisplayOrder.ToString())
+            {
+                //xatoliklar faqat summary yoki alohida field lar uchun yaratish mumkin 
+                ModelState.AddModelError("name", "Nomi va tartib raqami bir xil bo'lishi mumkin emas");
+            }
+            if(ModelState.IsValid)
+            {
+                _db.Categories.Update(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(obj);
+        }
     }
 }
