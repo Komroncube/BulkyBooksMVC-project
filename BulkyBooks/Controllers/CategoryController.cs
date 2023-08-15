@@ -25,6 +25,12 @@ namespace BulkyBooks.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Category obj)
         {
+            //qo'lbola validatsiya yaratish
+            if(obj.Name==obj.DisplayOrder.ToString())
+            {
+                //xatoliklar faqat summary yoki alohida field lar uchun yaratish mumkin 
+                ModelState.AddModelError("name", "Nomi va tartib raqami bir xil bo'lishi mumkin emas");
+            }
             if(ModelState.IsValid)
             {
                 _db.Categories.Add(obj);
