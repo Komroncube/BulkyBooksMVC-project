@@ -1,9 +1,9 @@
-﻿using firstdmo.Models;
+﻿using firstdemo.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Text.Json.Nodes;
 
-namespace firstdmo.Controllers
+namespace firstdemo.Controllers
 {
     public class HomeController : Controller
     {
@@ -43,6 +43,17 @@ namespace firstdmo.Controllers
             return View();
         }
 
+        public async Task Data()
+        {
+            Response.ContentType = "text/html;charset=utf-8";
+            System.Text.StringBuilder tableBuilder = new("<h2>Request headers</h2><table>");
+            foreach (var header in Request.Headers)
+            {
+                tableBuilder.Append($"<tr><td>{header.Key}</td><td>{header.Value}</td></tr>");
+            }
+            tableBuilder.Append("</table>");
+            await Response.WriteAsync(tableBuilder.ToString());
+        }
 
 
 
@@ -50,6 +61,14 @@ namespace firstdmo.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+        public string EmailResult(string email)
+        {
+            return email.ToString();
+        }
+        public IActionResult Form()
+        {
+            return View();
         }
     }
 }
