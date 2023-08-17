@@ -70,5 +70,14 @@ namespace firstdemo.Controllers
         {
             return View();
         }
+        public string ModelReturn(Book book)
+        {
+            return $"{book.Id} {book.Title}";
+        }
+        public string RequestQuery()
+        {
+            string name = Request.Query["email"];
+            return $"email: {name}";
+        }
     }
 }
