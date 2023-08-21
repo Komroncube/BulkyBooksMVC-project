@@ -8,7 +8,7 @@ namespace firstdemo.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            return new HtmlResult("<h3>Hi bookworms</h3>");
         }
         public string Show()
         {
