@@ -5,16 +5,22 @@ namespace firstdemo.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ICompanyRepository companyRepository;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ICompanyRepository companyRepository)
         {
-            _logger = logger;
+            this.companyRepository=companyRepository;
         }
-         
+        [HttpGet]
         public IActionResult Index()
         {
             return View();
+        }
+        [HttpPost]
+        public async Task<string> Index(Company company)
+        {
+            await companyRepository.CreateCompanyAsync(company);
+            return "Created";
         }
         public string Index2()
         {
