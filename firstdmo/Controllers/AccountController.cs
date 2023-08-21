@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-
-namespace firstdemo.Controllers
+﻿namespace firstdemo.Controllers
 {
     public class AccountController : Controller
     {

@@ -1,6 +1,4 @@
-﻿using firstdemo.Models;
-using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Text.Json.Nodes;
 
 namespace firstdemo.Controllers

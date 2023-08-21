@@ -1,7 +1,4 @@
-﻿using firstdemo.Models;
-using Microsoft.AspNetCore.Mvc;
-
-namespace firstdemo.Controllers
+﻿namespace firstdemo.Controllers
 {
     public class BookController : Controller
     {
