@@ -1,15 +1,14 @@
-using firstdemo.DataContext;
-using Microsoft.EntityFrameworkCore;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddTransient<ICompanyRepository, CompanyRepository>();
 builder.Services.AddDbContext<PersonDbContext>(options =>
 {
-    options.UseNpgsql(builder.Configuration.GetConnectionString("Connections"));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("SqlConnection"));
 });
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("CompanyConnection")));
 
 var app = builder.Build();
 
